@@ -20,12 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // get recyclerView from activity_main.xml
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-
+        // opens DB, insert some value, then getAll to a student ArrayList
         students = new ArrayList<>();
-
         dbStudents = new DbStudents(this);
         dbStudents.open();
         dbStudents.insert("Abel", "123");
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         dbStudents.insert("Putri", "123");
         students.addAll(dbStudents.getAll());
         dbStudents.close();
-
+        // show recycler view
         showRecyclerView();
     }
 
